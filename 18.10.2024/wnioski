@@ -1,0 +1,5 @@
+W tym tygodniu, w ramach projektu zespołowego "Rozpoznawanie ręcznie narysowanych cyfr", skupiliśmy się na porównaniu zestawów danych MNIST i SVHN oraz pracach nad interfejsem graficznym (GUI). Nasze testy wykazały, że zestaw MNIST, z 60 000 obrazami, w manualnych testach dawał skuteczność około 30%. Dla porównania, SVHN (wersja extra) zawierający 531 131 zdjęć osiągnął ponad 90% skuteczności. Choć SVHN oferuje znacznie lepsze wyniki, jest większy (1,3 GB) i wymaga dłuższego czasu trenowania modelu.
+
+Równocześnie pracowaliśmy nad GUI do rysowania cyfr przez użytkownika. Początkowo wybraliśmy Tkinter, jednak napotkaliśmy problem z zapisem obrazów do plików .png przy użyciu funkcji ImageGrab.grab(bbox=(x, y, x1, y1)), co działało tylko na jednej z maszyn. Mimo że Tkinter jest prostszy, zdecydowaliśmy się na PyQt, aby uniknąć tych problemów. Odrzuciliśmy także rozwiązanie wymagające instalacji Ghostscript.
+
+Ostatecznie zdecydowaliśmy, że GUI będzie stworzone w PyQt, a model zostanie trenowany na zestawie danych SVHN, który zapewnia lepsze wyniki w rozpoznawaniu cyfr.
