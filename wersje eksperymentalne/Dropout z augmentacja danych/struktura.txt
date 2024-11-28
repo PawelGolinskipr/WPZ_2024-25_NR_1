@@ -1,0 +1,29 @@
+
+def create_model(input_shape):
+    model = models.Sequential([
+        layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape),
+        layers.MaxPooling2D((2, 2)),
+        layers.Dropout(0.2),  # Dropout po pierwszej warstwie konwolucyjnej
+        
+        layers.Conv2D(64, (3, 3), activation='relu'),
+        layers.MaxPooling2D((2, 2)),
+        layers.Dropout(0.3),  # Dropout po drugiej warstwie konwolucyjnej
+        
+        layers.Conv2D(64, (3, 3), activation='relu'),
+        layers.Flatten(),
+        
+        layers.Dense(64, activation='relu'),
+        layers.Dropout(0.5),  # Dropout w warstwie w pełni połączonej
+        
+        layers.Dense(10, activation='softmax')
+    ])
+    return model
+
+# Augmentacja danych
+datagen = ImageDataGenerator(
+    rotation_range=15,          # Losowe obroty do 15 stopni
+    width_shift_range=0.1,      # Przesunięcia w poziomie
+    height_shift_range=0.1,     # Przesunięcia w pionie
+    zoom_range=0.1,             # Skalowanie (zoom-in, zoom-out)
+    brightness_range=[0.8, 1.2] # Zmiany jasności
+)
